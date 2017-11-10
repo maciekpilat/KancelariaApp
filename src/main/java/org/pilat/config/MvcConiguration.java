@@ -40,12 +40,12 @@ public class MvcConiguration extends WebMvcConfigurerAdapter {
         return bean;
     }
 
-    @Bean
-    public MultipartResolver multipartResolver() {
-        org.springframework.web.multipart.commons.CommonsMultipartResolver multipartResolver = new org.springframework.web.multipart.commons.CommonsMultipartResolver();
-        multipartResolver.setMaxUploadSize(TWENTY_FIVE_MEGABYTES); 
-        return multipartResolver;
-    }
+//    @Bean
+//    public MultipartResolver multipartResolver() {
+//        org.springframework.web.multipart.commons.CommonsMultipartResolver multipartResolver = new org.springframework.web.multipart.commons.CommonsMultipartResolver();
+//        multipartResolver.setMaxUploadSize(TWENTY_FIVE_MEGABYTES); 
+//        return multipartResolver;
+//    }
 
     @Bean(name = "messageSource")
     public ReloadableResourceBundleMessageSource getMessageSource() {

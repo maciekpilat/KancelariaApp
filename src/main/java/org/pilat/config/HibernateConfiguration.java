@@ -36,7 +36,7 @@ public class HibernateConfiguration {
 
     @Bean
     public DataSource dataSource() throws URISyntaxException {
-        URI dbUri = new URI(System.getenv("KANCELARIA_DATABASE"));
+     //   URI dbUri = new URI(System.getenv("KANCELARIA_DATABASE"));
         String username = "pilat2";
         String password = "aktsok12";
         String dbUrl = "jdbc:mysql://mysql01.maciekpilat.beep.pl";
