@@ -8,10 +8,7 @@ package org.pilat.dao;
 import org.pilat.model.Event;
 import org.springframework.stereotype.Repository;
 
-/**
- *
- * @author Pilat
- */
+
     @Repository
 public interface EventDaoInterface {
 

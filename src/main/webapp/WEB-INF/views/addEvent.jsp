@@ -13,5 +13,15 @@
     </head>
     <body>
         <h1>Formularz Event</h1>
+        <form>
+            <select name="eventType">
+                <option value="telephone">Volvo</option>
+                <option value="mailIn">Saab</option>
+                <option value="mailOut">Fiat</option>
+                <option value="court">Audi</option>
+            </select>
+            <br><br>
+            <input type="submit">
+        </form>       
     </body>
 </html>
