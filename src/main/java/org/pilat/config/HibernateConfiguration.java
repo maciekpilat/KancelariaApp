@@ -9,19 +9,24 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.Properties;
 import javax.sql.DataSource;
+import javax.transaction.Transactional;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  *
  * @author Pilat
  */
+@Configuration
+@EnableTransactionManagement
 public class HibernateConfiguration {
 
-    @Bean(name = "entityManagerFactory")
+    @Bean()
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws URISyntaxException {
 
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
@@ -36,10 +41,10 @@ public class HibernateConfiguration {
 
     @Bean
     public DataSource dataSource() throws URISyntaxException {
-     //   URI dbUri = new URI(System.getenv("KANCELARIA_DATABASE"));
+        URI dbUri = new URI(System.getenv("KANCELARIA_DATABASE"));
         String username = "pilat2";
         String password = "aktsok12";
-        String dbUrl = "jdbc:mysql://mysql01.maciekpilat.beep.pl";
+        String dbUrl = "jdbc:mysql://mysql01.maciekpilat.beep.pl/KANCELARIA_DATABASE";
 
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");

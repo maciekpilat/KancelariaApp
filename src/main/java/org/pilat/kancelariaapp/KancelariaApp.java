@@ -5,18 +5,13 @@
  */
 package org.pilat.kancelariaapp;
 
-
-import org.pilat.dao.EventDaoInterface;
-import org.pilat.model.Event;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
 /**
  *
  * @author Pilat
  */
 public class KancelariaApp {
     
-   
-          
+
+
+
 }

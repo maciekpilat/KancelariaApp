@@ -5,8 +5,6 @@
  */
 package org.pilat.controller;
 
-import org.pilat.dao.EventTypeDaoInterface;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,18 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author Pilat
  */
 @Controller
-public class EventController {
-
-    @Autowired
-    public EventTypeDaoInterface etdi;
-
-    @RequestMapping("/addevent")
-    public String addEvent(Model model) {
-        System.out.println("klocek");
-
-        model.addAttribute("eventTypeList", etdi.getAllEventType());
-
-        return "addEvent";
+public class StartController {
+   
+    @RequestMapping("/")
+    public String start(Model model) {
+       
+        return "start";
     }
 
 }

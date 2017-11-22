@@ -4,6 +4,7 @@
     Author     : Pilat
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,16 +13,21 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Formularz Event</h1>
-        <form>
+
+        <form action="response.jsp">
+            <strong>Select type of event:</strong>
+
             <select name="eventType">
-                <option value="telephone">Volvo</option>
-                <option value="mailIn">Saab</option>
-                <option value="mailOut">Fiat</option>
-                <option value="court">Audi</option>
+                <c:forEach var="eventTypeList" items="${etdi.getAllEventType()}">
+                    <option value="${eventTypeList.event_type_name}"></option>
+                </c:forEach>
+
             </select>
-            <br><br>
-            <input type="submit">
-        </form>       
-    </body>
+
+        </form>
+
+        <br><br>
+        <input type="submit">
+    </form>       
+</body>
 </html>

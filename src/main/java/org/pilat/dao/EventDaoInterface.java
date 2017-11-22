@@ -5,14 +5,18 @@
  */
 package org.pilat.dao;
 
+import java.util.List;
 import org.pilat.model.Event;
 import org.springframework.stereotype.Repository;
 
-
-    @Repository
+@Repository
 public interface EventDaoInterface {
 
     void saveOneEvent(Event e);
-//    getOneEvent
-//    getAll
+
+    Event getOneEvent(Long id);
+
+    List<Event> findAllEvent();
+
+    void deleteOneEvent(Long id);
 }

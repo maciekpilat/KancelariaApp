@@ -6,6 +6,7 @@
 package org.pilat.config;
 
 import org.pilat.dao.EventDaoImplementation;
+import org.pilat.dao.EventTypeDaoImplementation;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -15,14 +16,18 @@ import org.springframework.scheduling.annotation.EnableAsync;
  *
  * @author Pilat
  */
-
 @EnableAsync
 @Configuration
 @ComponentScan({"org.pilat.dao"})
 public class Beans {
 
     @Bean
-        public EventDaoImplementation eventDaoBean() {
+    public EventDaoImplementation eventDaoBean() {
         return new EventDaoImplementation();
+    }
+
+    @Bean
+    public EventTypeDaoImplementation eventTypeDaoBean() {
+        return new EventTypeDaoImplementation();
     }
 }

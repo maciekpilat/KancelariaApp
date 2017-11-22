@@ -5,29 +5,50 @@
  */
 package org.pilat.dao;
 
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import org.pilat.model.Event;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author Pilat
  */
-public class EventDaoImplementation implements EventDaoInterface{
+@Transactional
+public class EventDaoImplementation implements EventDaoInterface {
 
-@Override
-public void saveOneEvent(Event e){
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("LocProd");
-        EntityManager em = emf.createEntityManager();
+//    EntityManagerFactory emf = Persistence.createEntityManagerFactory("LocProd");
+//    EntityManager em = emf.createEntityManager();
+    
+    @PersistenceContext(unitName = "entityManagerFactory")
+    private EntityManager entityManager;
 
-        em.getTransaction().begin();
-        em.persist(e);
-        em.getTransaction().commit();
+    @Override
+    public void saveOneEvent(Event e) {
 
-        em.close();
-        emf.close();
+        //  em.getTransaction().begin();
+        entityManager.persist(e);
+        // em.getTransaction().commit();
+
+        // em.close();
+        //emf.close();
     }
-  
+
+    public Event getOneEvent(Long id) {
+        return entityManager.find(Event.class, id);
+
+    }
+
+    public List< Event> findAllEvent() {
+        return entityManager.createQuery("from " + Event.class)
+                .getResultList();
+    }
+
+    public void deleteOneEvent(Long id) {
+        entityManager.remove(id);
+    }
 
 }

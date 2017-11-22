@@ -16,12 +16,12 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EventTypeDaoInterface {
 
-    EventType getOneEventType(Long evnt_type_id);
+     EventType getOneEventType(Long evnt_type_id);
 
-    List<EventType> getAllEventType(Long evnt_type_id);
+    void saveOneEventType(EventType e);
 
-    void addEvenType();
+    List<EventType> getAllEventType();
 
-    void deleteEventType(Long evnt_type_id);
+    void deleteOneEventType(Long id);
 
 }

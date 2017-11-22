@@ -6,34 +6,55 @@
 package org.pilat.dao;
 
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import org.pilat.model.EventType;
 
+//event_type_id;
+//event_type_name;
 /**
  *
  * @author Pilat
  */
+@Transactional
 public class EventTypeDaoImplementation implements EventTypeDaoInterface {
+
+    @PersistenceContext(unitName = "entityManagerFactory")
+    private EntityManager entityManager;
 
     @Override
     public EventType getOneEventType(Long evnt_type_id) {
-        
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //Not supported yet
+        return null;
     }
 
-    @Override
-    public List<EventType> getAllEventType(Long evnt_type_id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void saveOneEventType(EventType e) {
+        entityManager.persist(e);
     }
 
+    @Transactional
     @Override
-    public void addEvenType() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<EventType> getAllEventType() {
+        //EntityManagerFactory emf = Persistence.createEntityManagerFactory("entityManagerFactory");
+        //entityManager = emf.createEntityManager();
+        // entityManager.getTransaction().begin();
+        List<EventType> eventTypeList = entityManager.createQuery("SELECT event_type_id, event_type_name  FROM EventType").getResultList();
+        // entityManager.getTransaction().commit();
+        //  entityManager.close();
+        //emf.close();
+        return eventTypeList;
     }
 
-    @Override
-    public void deleteEventType(Long evnt_type_id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List< EventType> findAllEvent() {
+        return entityManager.createQuery("from " + EventType.class)
+                .getResultList();
     }
-    
-    
+
+    public void deleteOneEventType(Long id) {
+        entityManager.remove(id);
+    }
+
 }
