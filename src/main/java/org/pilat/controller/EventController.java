@@ -18,14 +18,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class EventController {
 
-    @Autowired
-    public EventTypeDaoInterface etdi;
+    //@Autowired
+   //public EventTypeDaoInterface etdi;
 
     @RequestMapping("/addevent")
-    public String addEvent(Model model) {
-        System.out.println("klocek");
+    public String addEvent() {
 
-        model.addAttribute("eventTypeList", etdi.getAllEventType());
+
+       // model.addAttribute("eventTypeList", etdi.getAllEventType());
 
         return "addEvent";
     }

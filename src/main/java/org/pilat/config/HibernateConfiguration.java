@@ -41,16 +41,11 @@ public class HibernateConfiguration {
 
     @Bean
     public DataSource dataSource() throws URISyntaxException {
-        URI dbUri = new URI(System.getenv("KANCELARIA_DATABASE"));
-        String username = "pilat2";
-        String password = "aktsok12";
-        String dbUrl = "jdbc:mysql://mysql01.maciekpilat.beep.pl/KANCELARIA_DATABASE";
-
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl(dbUrl);
-        dataSource.setUsername(username);
-        dataSource.setPassword(password);
+        dataSource.setUrl("jdbc:mysql://mysql01.maciekpilat.beep.pl/KANCELARIA_DATABASE");
+        dataSource.setUsername("pilat2");
+        dataSource.setPassword("aktsok12");
         return dataSource;
     }
 
