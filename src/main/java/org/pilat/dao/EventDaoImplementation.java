@@ -29,9 +29,9 @@ public class EventDaoImplementation implements EventDaoInterface {
     @Override
     public void saveOneEvent(Event e) {
 
-        //  em.getTransaction().begin();
+        entityManager.getTransaction().begin();
         entityManager.persist(e);
-        // em.getTransaction().commit();
+        entityManager.getTransaction().commit();
 
         // em.close();
         //emf.close();

@@ -27,12 +27,21 @@ public class EventTypeDaoImplementation implements EventTypeDaoInterface {
 
     @Override
     public EventType getOneEventType(Long evnt_type_id) {
-        //Not supported yet
-        return null;
+        
+        entityManager.getTransaction().begin();
+        EventType e = entityManager.find(EventType.class, evnt_type_id);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+        System.out.println(e);
+        return e;
     }
 
     public void saveOneEventType(EventType e) {
+        entityManager.getTransaction().begin();
         entityManager.persist(e);
+        entityManager.getTransaction().commit();
+        entityManager.close();
+
     }
 
     @Transactional

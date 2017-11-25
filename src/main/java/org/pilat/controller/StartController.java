@@ -5,6 +5,7 @@
  */
 package org.pilat.controller;
 
+import org.pilat.dao.EventTypeDaoInterface;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,10 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class StartController {
-   
+
+     public EventTypeDaoInterface etdi;
+    
+     
+    
     @RequestMapping("/")
-    public String start(Model model) {
-       
+    public String start(Model model) { 
+        
         return "start";
     }
 
