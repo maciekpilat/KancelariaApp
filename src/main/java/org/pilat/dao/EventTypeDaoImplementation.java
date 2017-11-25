@@ -27,21 +27,22 @@ public class EventTypeDaoImplementation implements EventTypeDaoInterface {
 
     @Override
     public EventType getOneEventType(Long evnt_type_id) {
-        
+        System.out.println("Pobieram jeden typ eventu!");
         entityManager.getTransaction().begin();
         EventType e = entityManager.find(EventType.class, evnt_type_id);
         entityManager.getTransaction().commit();
         entityManager.close();
-        System.out.println(e);
+        System.out.println("Oto dane pobranego eventu: " + e);
         return e;
     }
 
     public void saveOneEventType(EventType e) {
+        System.out.println("Zapisuję dane!");
         entityManager.getTransaction().begin();
         entityManager.persist(e);
         entityManager.getTransaction().commit();
         entityManager.close();
-
+System.out.println("Zapisałem dane!");
     }
 
     @Transactional
@@ -49,10 +50,12 @@ public class EventTypeDaoImplementation implements EventTypeDaoInterface {
     public List<EventType> getAllEventType() {
         //EntityManagerFactory emf = Persistence.createEntityManagerFactory("entityManagerFactory");
         //entityManager = emf.createEntityManager();
-        // entityManager.getTransaction().begin();
+        System.out.println("Pobieram wszystkie typy eventów!");
+        entityManager.getTransaction().begin();
         List<EventType> eventTypeList = entityManager.createQuery("SELECT event_type_id, event_type_name  FROM EventType").getResultList();
-        // entityManager.getTransaction().commit();
-        //  entityManager.close();
+        entityManager.getTransaction().commit();
+        entityManager.close();
+         System.out.println("Pobrałem wszystkie typy eventów!");
         //emf.close();
         return eventTypeList;
     }
